@@ -5,9 +5,9 @@ import db from "../../db/models";
 const router = express.Router();
 
 const isLoggedIn: express.RequestHandler = (req: any, res, next) => {
-if (req.user || req.user.role !== "guest")
+if (req.user || req.user.role !== "guest") {
 console.log(`req.user.role: ${req.user.role}`);
-return (res.sendStatus(401);
+return res.sendStatus(401);
 } else {
 return next();
 }
@@ -81,11 +81,38 @@ next(e);
 router.delete("/:id", isLoggedIn, async (req, res, next) => {
 try {
 let id = Number(req.params.id);
-let detail = await db.Activities.remove(id);
+let details = await db.Activities.remove(id);
 res.json({ details, msg: "Activity deleted." });
 } catch (e) {
 console.log(e);
 next(e);
 }
 });
+router.get("/user/:id", async (req, res, next) => {
+try {
+let id = Number(req.params.id);
+let [activities] = await db.Activities.allByUser(id);
+res.json(activities.reverse());
+} catch (err) {
+console.log(err);
+next(err);
+}
+});
+
+router.get("/userFollows/:id", async (req, res, next) => {
+try {
+let id = Number(req.params.id);
+let [activities] = await db.Activities.followedActivities(id);
+res.json(activities);
+} catch (err) {
+console.log(err);
+next(err);
+}
+});
+
+export default router;
+
+
+
+
 
