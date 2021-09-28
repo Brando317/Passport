@@ -3,7 +3,7 @@ id?: number;
 userid?: number;
 type?: string; 
 title?: string;
-title?: string;
+
 desciption?: string;
 hrs?: number;
 min?: number;
@@ -22,14 +22,14 @@ _created?: Date;
 role?: string;
 }
 
-exporttype Error = {
-status ?: number;
+export interface Error {
+status?: number;
 message?: string;
 };
 
 
 
-export interface IToken = {
+export interface IToken {
 id?: number;
 userid: number;
 token: string;
