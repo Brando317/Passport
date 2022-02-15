@@ -1,4 +1,4 @@
-import query from "../models";
+import { query } from "../models";
 import { Token } from "../..utils/types";
 
 

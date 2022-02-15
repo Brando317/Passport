@@ -17,7 +17,7 @@ const mysql = {
 host: "localhost",
 user: "root",
 password: "password",
-database: "bestbuy"
+database: "Telewave"
 };
 
 const connection = mysql.createPool(mysqlConfig);

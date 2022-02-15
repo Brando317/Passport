@@ -19,4 +19,10 @@ router.use("/activities", activityRouter);
 
 router.use("/members", memberRouter);
 
+router.use("/messages", messageRouter);
+
+
+
+
+
 export default router;

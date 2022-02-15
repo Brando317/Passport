@@ -16,5 +16,5 @@ done(null, false);
 } catch (e) {
     done(e);
 }
-})
+    })
 );
